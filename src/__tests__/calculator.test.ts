@@ -24,4 +24,26 @@ let dataset = [
   { x: 81, y: 227, method: "divide" },
 ];
 
-describe("Calculator", () => {});
+
+describe("Calculator", () => {
+  dataset.forEach((calculation) => {
+    it(`The ${calculation.method} method to be with ${calculation.x} and ${calculation.y}`, () => {
+      switch (calculation.method) {
+        case "add":
+          expect(calculator.add(calculation.x, calculation.y)).toEqual(calculation.x + calculation.y);
+          break;
+        case "subtract":
+          expect(calculator.subtract(calculation.x, calculation.y)).toEqual(calculation.x - calculation.y);
+          break;
+        case "multiply":
+          expect(calculator.multiply(calculation.x, calculation.y)).toEqual(calculation.x * calculation.y);
+          break;
+        case "divide":
+          expect(calculator.divide(calculation.x, calculation.y)).toEqual(calculation.x / calculation.y);
+          break;
+        default:
+          console.log("Calculation method is not available.")
+      }
+    });
+  });
+})
